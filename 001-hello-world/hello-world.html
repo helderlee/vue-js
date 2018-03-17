@@ -9,18 +9,30 @@
 
 <body>
     <div id="app">
+        <h1 v-once>{{ oneTimeHello }}</h1>
+        <p>Type something:</p>
         <input type="text" v-on:input="changeTitle">
         <p>{{ message }}</p>
+        <p>{{ sayHello() }} - <a v-bind:href="link">Google</a></p>
+        <p v-html="finishedLink"></p>
     </div>
     <script type="text/javascript">
         new Vue({
             el: "#app",
             data: {
-                message: "Hello World!"
+                message: "Hi!",
+                hello: "Hello World!",
+                oneTimeHello: "Hello One Time!",
+                link: "http://www.google.com",
+                finishedLink: '<a href="http://www.google.com">Google</a>'
             },
             methods: {
                 changeTitle: function (event) {
                     this.message = event.target.value;
+                },
+                sayHello: function () {
+                    this.oneTimeHello = this.hello;
+                    return this.hello;
                 }
             }
         });
