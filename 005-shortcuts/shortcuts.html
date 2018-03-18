@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS 2 Shortcuts</title>
+    <script src="../development-mode/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="changeLink">Change Link</button>
+        <a :href="link">Link</a>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: "#app",
+            data: {
+                link: 'http://www.google.com'
+            },
+            methods: {
+                changeLink: function () {
+                    this.link = "http://www.apple.com";
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
