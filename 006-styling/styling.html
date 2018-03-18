@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS 2 Styling</title>
+    <script src="../development-mode/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
+        <div class="demo" @click="attachGreen = !attachGreen" :class="{green: attachGreen}"></div>
+        <div class="demo" :class="[color, {red: attachRed}]"></div>
+        <hr/>
+        <input type="text" v-model="color">
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: "#app",
+            data: {
+                attachRed: false,
+                attachGreen: false,
+                attachBlue: false,
+                color: 'green'
+            },
+            computed: {
+                divClasses: function () {
+                    return {
+                        red: this.attachRed,
+                        blue: !this.attachRed
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
