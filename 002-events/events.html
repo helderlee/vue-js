@@ -11,8 +11,10 @@
     <div id="app">
         <button v-on:click="increase">Increase 1</button>
         <button v-on:click="increaseBy(2, $event)">Increase 2</button>
+        <button v-on:click="counter++">Increase 1</button>
         <p>{{ message }}</p>
         <p>{{ counter }}</p>
+        <p>{{ counter > 10 ? 'Greater than 10' : 'Less than or equal to 10' }}</p>
         <p v-on:mousemove="updateCoordinate">Coordinates: ({{ x }} , {{ y }}) -
             <span v-on:mousemove.stop="">DEAD SPOT</span>
         </p>
@@ -28,18 +30,18 @@
                 message: "Button"
             },
             methods: {
-                increase: function() {
+                increase: function () {
                     this.counter++;
                 },
-                increaseBy: function(step, event) {
+                increaseBy: function (step, event) {
                     this.counter += step;
                     this.message = event.target.innerText;
                 },
-                updateCoordinate: function(event) {
+                updateCoordinate: function (event) {
                     this.x = event.clientX;
                     this.y = event.clientY;
                 },
-                alertMe: function() {
+                alertMe: function () {
                     alert('Alert!');
                 }
             }
